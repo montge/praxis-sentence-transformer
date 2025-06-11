@@ -1,0 +1,81 @@
+[build-system]
+requires = ["setuptools>=45", "wheel", "pip>=21.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "praxis-sentence-transformer"
+version = "0.2.0"
+description = "A library for analyzing requirements using sentence transformers"
+readme = "README.md"
+requires-python = ">=3.8"
+authors = [
+    {name = "Evan Montgomery-Recht"}
+]
+license = {file = "LICENSE"}
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "torch>=2.7.0",
+    "transformers>=4.52.4",
+    "sentence-transformers>=4.1.0",
+    "numpy>=2.2.6",
+    "pandas>=2.3.0",
+    "neo4j>=5.28.1",
+    "spacy>=3.8.7",
+    "scikit-learn>=1.7.0",
+    "matplotlib>=3.10.3",
+    "seaborn>=0.13.2",
+    "tqdm>=4.67.1",
+    "python-dotenv>=1.1.0",
+    "langchain>=0.3.25",
+    "langchain-huggingface>=0.2.0",
+    "huggingface_hub>=0.32.4",
+    "anthropic>=0.52.2",
+    "openai>=1.75.0",
+    "requests>=2.32.3",
+    "tenacity>=9.1.2",
+    "rich>=13.9.4",
+    "pydantic>=2.11.5",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=6.0",
+    "pytest-cov>=2.0",
+    "black>=21.0",
+    "isort>=5.0",
+    "flake8>=3.9",
+    "mypy>=0.910",
+]
+docs = [
+    "sphinx>=4.0",
+    "sphinx-rtd-theme>=0.5",
+    "myst-parser>=0.15",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.black]
+line-length = 100
+include = '\.pyi?$'
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3 
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-v --cov=praxis_sentence_transformer"
